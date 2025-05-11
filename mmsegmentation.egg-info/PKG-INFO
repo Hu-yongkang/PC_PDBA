@@ -1,0 +1,92 @@
+Metadata-Version: 2.1
+Name: mmsegmentation
+Version: 0.16.0
+Summary: Open MMLab Semantic Segmentation Toolbox and Benchmark
+Home-page: http://github.com/open-mmlab/mmsegmentation
+Author: MMSegmentation Authors
+Author-email: openmmlab@gmail.com
+License: Apache License 2.0
+Keywords: computer vision,semantic segmentation
+Classifier: Development Status :: 4 - Beta
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Description-Content-Type: text/markdown
+Provides-Extra: all
+Requires-Dist: cityscapesscripts==2.2.0; extra == "all"
+Requires-Dist: cycler==0.10.0; extra == "all"
+Requires-Dist: gdown==4.2.0; extra == "all"
+Requires-Dist: humanfriendly==9.2; extra == "all"
+Requires-Dist: kiwisolver==1.2.0; extra == "all"
+Requires-Dist: kornia==0.5.8; extra == "all"
+Requires-Dist: matplotlib==3.4.2; extra == "all"
+Requires-Dist: numpy==1.19.2; extra == "all"
+Requires-Dist: opencv-python==4.4.0.46; extra == "all"
+Requires-Dist: pandas==1.1.3; extra == "all"
+Requires-Dist: Pillow==8.3.1; extra == "all"
+Requires-Dist: prettytable==2.1.0; extra == "all"
+Requires-Dist: pyparsing==2.4.7; extra == "all"
+Requires-Dist: pytz==2020.1; extra == "all"
+Requires-Dist: PyYAML==5.4.1; extra == "all"
+Requires-Dist: scipy==1.6.3; extra == "all"
+Requires-Dist: seaborn==0.11.1; extra == "all"
+Requires-Dist: timm==0.3.2; extra == "all"
+Requires-Dist: torch==1.7.1+cu110; extra == "all"
+Requires-Dist: torchvision==0.8.2+cu110; extra == "all"
+Requires-Dist: tqdm==4.48.2; extra == "all"
+Requires-Dist: typing-extensions==3.7.4.3; extra == "all"
+Requires-Dist: wcwidth==0.2.5; extra == "all"
+Requires-Dist: yapf==0.31.0; extra == "all"
+Provides-Extra: tests
+Provides-Extra: build
+Provides-Extra: optional
+
+
+## Testing
+
+We also provide pretrained models below for PiPa based on DAFormer.
+
+### 
+
+| model name                       | mIoU  | checkpoint file download                    |
+| :------------------------------- | :---: | :------------------------------------- |
+| pipa_gta_to_cs.pth  | 71.7  | [Google Drive](https://drive.google.com/file/d/1qDAiS1gzhkFgoPwrLcJXlXgjr8OysH0h/view?usp=share_link)|
+| pipa_syn_to_cs.pth  | 63.4  | [Google Drive](https://drive.google.com/file/d/1iQWBrrvwCFaPdg6a9bnlthmGYPyTy0y4/view?usp=share_link)|
+
+
+```shell
+python -m tools.test path/to/config_file path/to/checkpoint_file --format-only --eval-option 
+```
+
+
+## Training  
+
+```shell
+python run_experiments.py --config configs/pipa/gta2cs_uda_warm_fdthings_rcs_croppl_a999_daformer_mitb5_s0.py
+```
+
+The logs and checkpoints are stored in `work_dirs/`.
+
+ 
+V2P
+CUDA_VISIBLE_DEVICES=1 python run_experiments.py --config configs/pipa/ISPRS_V2P.py
+
+P2V
+CUDA_VISIBLE_DEVICES=1 python run_experiments.py --config configs/pipa/ISPRS_P2V.py
+code/2023ACM-Pipo/PiPa-main/PiPa-main/PiPa_DAFormer/configs/pipa/
+
+IR_P2V
+CUDA_VISIBLE_DEVICES=1 python run_experiments.py --config configs/pipa/ISPRS_IR_P2V015.py
+
+V2IR_P
+CUDA_VISIBLE_DEVICES=2 python run_experiments.py --config configs/pipa/ISPRS_V2IR_P01.py
+
+ 
+
+
+
+
+
+
